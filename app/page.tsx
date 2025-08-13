@@ -1,13 +1,18 @@
+'use client'
+
 import AcmeLogo from '@/app/ui/acme-logo';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import styles from '@/app/ui/home.module.css'
 import {lusitana} from '@/app/ui/fonts'
 import Image from 'next/image';
+import { CopilotSidebar, CopilotKitCSSProperties } from '@copilotkit/react-ui';
+import { useState } from "react";
 
 export default function Page() {
+  const [themeColor, setThemeColor] = useState("#6366f1");
   return (
-    <main className={`flex min-h-screen flex-col p-6`}>
+    <main style={{ "--copilot-kit-primary-color": themeColor } as CopilotKitCSSProperties} className={`flex min-h-screen flex-col p-6`}>
       <div className={styles.shape}>
         <AcmeLogo />
       </div>
@@ -41,7 +46,14 @@ export default function Page() {
               className='hidden md:block'
             />
 
-            <Image 
+            <Image
+              src="/hero-mobile.png"
+              alt="Mobile Hero Image"
+              width={500}
+              height={500}
+              className='block md:hidden'
+            />
+            <Image
               src="/hero-mobile.png"
               alt="Hero Image"
               width={500}
